@@ -1,15 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
 
-/** Chooses a language: saved choice → browser language → German. */
+/** Chooses a language: saved choice → German. */
 function pickLocale(req: NextRequest): Locale {
   const saved = req.cookies.get("NEXT_LOCALE")?.value;
   if (saved && isLocale(saved)) return saved;
-  const header = req.headers.get("accept-language") ?? "";
-  for (const part of header.split(",")) {
-    const code = part.split(";")[0].trim().slice(0, 2).toLowerCase();
-    if (isLocale(code)) return code;
-  }
   return defaultLocale;
 }
 
