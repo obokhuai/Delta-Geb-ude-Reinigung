@@ -123,6 +123,7 @@ p { margin: 0; }
 .wa-btn:hover { border-color: var(--fg); }
 .call-btn { position: fixed; right: 70px; bottom: 18px; z-index: 40; background: var(--petrol); border-color: transparent; color: var(--petrol-ink); box-shadow: var(--shadow); }
 .call-btn:hover { border-color: var(--fg); }
+@media (min-width: 621px) { .call-btn { display: none; } }
 .menu-btn { display: none; }
 .header-cta { display: inline-flex; }
 @media (max-width: 1020px) { .header-cta { display: none; } }
