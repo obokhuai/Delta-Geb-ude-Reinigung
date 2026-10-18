@@ -40,8 +40,8 @@ export const site = {
   },
 
   hours: {
-    de: "[Öffnungszeiten ergänzen, z. B. Mo–Fr 08:00–18:00]",
-    en: "[Add business hours, e.g. Mon–Fri 8 am–6 pm]"
+    de: "Mo–Sa 08:00–18:00",
+    en: "Mon–Sat 8 am–6 pm"
   }
 } as const;
 

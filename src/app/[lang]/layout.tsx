@@ -76,6 +76,14 @@ function LocalBusinessJsonLd({ locale }: { locale: Locale }) {
       addressCountry: site.address.countryCode
     },
     areaServed: { "@type": "City", name: "Essen" },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "08:00",
+        closes: "18:00"
+      }
+    ],
     makesOffer: Object.values(dict.services.items).map((s) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: s.title }
