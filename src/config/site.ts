@@ -19,6 +19,10 @@ export const site = {
     href: "tel:+4920127109762",
     international: "+49 201 27109762"
   },
+  whatsapp: {
+    display: "+49 1521 1963058",
+    href: "https://wa.me/4915211963058"
+  },
   email: "onyiberecycling@yahoo.com",
 
   // Legal notice (Impressum) – required by German law

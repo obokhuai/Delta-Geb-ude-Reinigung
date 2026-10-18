@@ -116,6 +116,10 @@ p { margin: 0; }
 .seg a[aria-current="true"] { background: var(--petrol); color: var(--petrol-ink); }
 .icon-btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--fg); display: inline-grid; place-items: center; cursor: pointer; padding: 0; }
 .icon-btn:hover { border-color: var(--fg); }
+.back-top { position: fixed; right: 18px; bottom: 70px; z-index: 40; box-shadow: var(--shadow); }
+.back-top svg { transform: rotate(-90deg); }
+.wa-btn { position: fixed; right: 18px; bottom: 18px; z-index: 40; background: #25d366; border-color: transparent; color: #fff; box-shadow: var(--shadow); }
+.wa-btn:hover { border-color: var(--fg); }
 .menu-btn { display: none; }
 .header-cta { display: inline-flex; }
 @media (max-width: 1020px) { .header-cta { display: none; } }
