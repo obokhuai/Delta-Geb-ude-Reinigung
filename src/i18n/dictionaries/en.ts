@@ -26,7 +26,8 @@ const en: Dictionary = {
     mainNav: "Main navigation",
     home: "Delta Gebäude Reinigung – home",
     toTop: "Back to top",
-    whatsapp: "Chat on WhatsApp"
+    whatsapp: "Chat on WhatsApp",
+    call: "Call us directly"
   },
   tagline: "Cleaning services in Essen",
   nav: { home: "Home", about: "About us", services: "Services", why: "Why us", quote: "Quote", contact: "Contact" },

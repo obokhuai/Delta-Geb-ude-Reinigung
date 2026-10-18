@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import BackToTop from "@/components/BackToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import CallButton from "@/components/CallButton";
 import { themeInitScript } from "@/components/ThemeToggle";
 
 export const dynamicParams = false;
@@ -116,6 +117,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <main id="main">{children}</main>
         <Footer locale={lang} dict={dict} />
         <WhatsAppButton label={dict.a11y.whatsapp} />
+        <CallButton label={dict.a11y.call} />
         <BackToTop label={dict.a11y.toTop} />
         <Reveal />
       </body>

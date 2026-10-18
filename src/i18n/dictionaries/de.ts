@@ -25,7 +25,8 @@ const de = {
     mainNav: "Hauptnavigation",
     home: "Delta Gebäude Reinigung – Startseite",
     toTop: "Nach oben",
-    whatsapp: "Auf WhatsApp chatten"
+    whatsapp: "Auf WhatsApp chatten",
+    call: "Direkt anrufen"
   },
   tagline: "Reinigungsservice in Essen",
   nav: { home: "Start", about: "Über uns", services: "Leistungen", why: "Warum wir", quote: "Angebot", contact: "Kontakt" },
