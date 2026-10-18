@@ -31,7 +31,7 @@ export const site = {
 
   // Managing director / CEO section on the home page
   ceo: {
-    name: "[Vor- und Nachname des Geschäftsführers]",
+    name: "Emmanuel Onyibe",
     photo: "/images/ceo.jpg"
   },
 
