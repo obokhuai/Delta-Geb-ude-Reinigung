@@ -16,8 +16,20 @@ interface Props {
 
 export default function Header({ locale, dict }: Props) {
   const [open, setOpen] = useState(false);
+  const [hash, setHash] = useState("");
   const btnRef = useRef<HTMLButtonElement>(null);
   const home = `/${locale}`;
+
+  useEffect(() => {
+    const sync = () => setHash(window.location.hash);
+    sync();
+    window.addEventListener("hashchange", sync);
+    window.addEventListener("popstate", sync);
+    return () => {
+      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("popstate", sync);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -56,7 +68,14 @@ export default function Header({ locale, dict }: Props) {
           <ul>
             {links.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} onClick={() => setOpen(false)}>
+                <Link
+                  href={l.href}
+                  aria-current={hash !== "" && l.href.endsWith(hash) ? "location" : undefined}
+                  onClick={() => {
+                    setHash(`#${l.href.split("#")[1]}`);
+                    setOpen(false);
+                  }}
+                >
                   {l.label}
                 </Link>
               </li>
