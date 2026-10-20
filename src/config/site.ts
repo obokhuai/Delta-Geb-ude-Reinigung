@@ -21,6 +21,8 @@ export const site = {
   },
   whatsapp: {
     display: "+49 1521 1963058",
+    /** Digits only – wa.me needs the number without spaces or plus. */
+    number: "4915211963058",
     href: "https://wa.me/4915211963058"
   },
   email: "onyiberecycling@yahoo.com",

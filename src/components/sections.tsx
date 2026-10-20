@@ -17,7 +17,8 @@ import {
   PhoneIcon,
   PinIcon,
   SearchIcon,
-  ThumbIcon
+  ThumbIcon,
+  WhatsAppIcon
 } from "./icons";
 import ServiceCta from "./ServiceCta";
 import QuoteForm from "./QuoteForm";
@@ -252,6 +253,18 @@ export function Contact({ locale, dict, head = true, titleId = "contact-title" }
                 <div className="v"><a href={site.phone.href}>{site.phone.display}</a></div>
               </div>
               <CopyButton text={site.phone.display} {...copyProps} />
+            </div>
+            <div className="contact-item">
+              <span className="ico ico-whatsapp"><WhatsAppIcon size={22} /></span>
+              <div>
+                <div className="k">{contact.whatsapp}</div>
+                <div className="v">
+                  <a href={site.whatsapp.href} target="_blank" rel="noopener noreferrer">
+                    {site.whatsapp.display}
+                  </a>
+                </div>
+              </div>
+              <CopyButton text={site.whatsapp.display} {...copyProps} />
             </div>
             <div className="contact-item">
               <span className="ico"><MailIcon size={22} /></span>

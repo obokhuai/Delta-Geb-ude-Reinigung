@@ -218,6 +218,7 @@ const en: Dictionary = {
     title: "Get in touch",
     lead: "Have a question or want to arrange a date? Call us, write to us or use the form.",
     phone: "Phone",
+    whatsapp: "WhatsApp",
     email: "Email",
     address: "Address",
     map: "Open in Google Maps",

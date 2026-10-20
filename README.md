@@ -24,11 +24,14 @@ npm run dev                  # open http://localhost:3000
 
 | What | File |
 |---|---|
-| Address, phone, email, owner, VAT ID, hours, hosting provider | `src/config/site.ts` |
+| Address, phone, **WhatsApp number**, e-mail, owner, VAT ID, hours, hosting provider | `src/config/site.ts` |
 | All German texts | `src/i18n/dictionaries/de.ts` |
 | All English texts | `src/i18n/dictionaries/en.ts` |
 | Colours and fonts | top of `src/app/globals.css` |
 | Impressum / privacy wording | `src/components/LegalContent.tsx` |
+
+The WhatsApp number is used in three places: the floating WhatsApp button, the contact page and the footer.
+It is stored once in `site.whatsapp` – change it there and it updates everywhere.
 
 Values written in `[square brackets]` are placeholders. They appear highlighted in yellow on the site until you replace them.
 **The Impressum must be complete before the site goes live** (German law, § 5 DDG).

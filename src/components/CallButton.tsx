@@ -6,7 +6,7 @@ export default function CallButton({ label }: { label: string }) {
   return (
     <a
       className="icon-btn call-btn"
-      href={`tel:${site.whatsapp.display.replace(/[^\d+]/g, "")}`}
+      href={site.phone.href}
       aria-label={label}
     >
       <PhoneIcon />

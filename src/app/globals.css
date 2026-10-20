@@ -395,6 +395,11 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .contact-list { display: grid; gap: 12px; margin-top: 8px; }
 .contact-item { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
 .contact-item .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--surface-2); color: var(--link); display: grid; place-items: center; }
+.contact-item .ico-whatsapp { background: color-mix(in srgb, #25d366 16%, var(--surface-2)); color: #128c4a; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .contact-item .ico-whatsapp { color: #4ed382; }
+}
+:root[data-theme="dark"] .contact-item .ico-whatsapp { color: #4ed382; }
 .contact-item .k { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--muted); }
 .contact-item .v { font-weight: 600; overflow-wrap: anywhere; }
 .contact-item .v a { color: var(--fg); text-decoration: none; }

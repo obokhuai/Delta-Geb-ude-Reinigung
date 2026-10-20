@@ -1,5 +1,5 @@
 import { site } from "@/config/site";
-import { PhoneIcon } from "@/components/icons";
+import { WhatsAppIcon } from "@/components/icons";
 
 /** Floating WhatsApp chat link, stacked above the back-to-top button. */
 export default function WhatsAppButton({ label }: { label: string }) {
@@ -9,9 +9,9 @@ export default function WhatsAppButton({ label }: { label: string }) {
       href={site.whatsapp.href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
+      aria-label={`${label} ${site.whatsapp.display}`}
     >
-      <PhoneIcon />
+      <WhatsAppIcon size={24} />
     </a>
   );
 }

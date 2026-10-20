@@ -37,6 +37,11 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
                 {site.address.postalCode} {site.address.city}
               </li>
               <li><a href={site.phone.href}>{site.phone.display}</a></li>
+              <li>
+                <a href={site.whatsapp.href} target="_blank" rel="noopener noreferrer">
+                  WhatsApp {site.whatsapp.display}
+                </a>
+              </li>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             </ul>
           </div>
