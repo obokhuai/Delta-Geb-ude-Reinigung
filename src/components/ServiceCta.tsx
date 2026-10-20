@@ -1,16 +1,15 @@
-"use client";
+import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import { pagePath } from "@/i18n/config";
 
-export const SERVICE_EVENT = "delta:select-service";
-
-/** Link to the quote form that pre-selects the given service. */
-export default function ServiceCta({ service, label }: { service: string; label: string }) {
+/**
+ * Link to the quote page. The service is carried in the URL (?service=…) so the
+ * form can pre-select it – that also works when the link is opened in a new tab.
+ */
+export default function ServiceCta({ service, label, locale }: { service: string; label: string; locale: Locale }) {
   return (
-    <a
-      className="btn btn-ghost btn-small"
-      href="#quote"
-      onClick={() => window.dispatchEvent(new CustomEvent(SERVICE_EVENT, { detail: service }))}
-    >
+    <Link className="btn btn-ghost btn-small" href={`${pagePath(locale, "quote")}?service=${encodeURIComponent(service)}`}>
       {label}
-    </a>
+    </Link>
   );
 }

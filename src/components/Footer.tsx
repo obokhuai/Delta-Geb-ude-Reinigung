@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { legalSlugs, type Locale } from "@/i18n/config";
+import { legalPath, pagePath, PAGE_IDS, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/de";
 import { site } from "@/config/site";
 import { Logo } from "./illustrations";
@@ -23,11 +23,9 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
             <h2>{footer.nav}</h2>
             <ul>
               <li><Link href={home}>{nav.home}</Link></li>
-              <li><Link href={`${home}#about`}>{nav.about}</Link></li>
-              <li><Link href={`${home}#services`}>{nav.services}</Link></li>
-              <li><Link href={`${home}#why`}>{nav.why}</Link></li>
-              <li><Link href={`${home}#quote`}>{nav.quote}</Link></li>
-              <li><Link href={`${home}#contact`}>{nav.contact}</Link></li>
+              {PAGE_IDS.map((id) => (
+                <li key={id}><Link href={pagePath(locale, id)}>{nav[id]}</Link></li>
+              ))}
             </ul>
           </div>
           <div>
@@ -45,8 +43,8 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
           <div>
             <h2>{footer.legal}</h2>
             <ul>
-              <li><Link href={`${home}/${legalSlugs.imprint[locale]}`}>{legal.imprint}</Link></li>
-              <li><Link href={`${home}/${legalSlugs.privacy[locale]}`}>{legal.privacy}</Link></li>
+              <li><Link href={legalPath(locale, "imprint")}>{legal.imprint}</Link></li>
+              <li><Link href={legalPath(locale, "privacy")}>{legal.privacy}</Link></li>
               <li style={{ marginTop: 8 }}>
                 <LanguageSwitcher locale={locale} label={dict.a11y.language} long />
               </li>

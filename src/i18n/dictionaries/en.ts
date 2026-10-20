@@ -31,6 +31,38 @@ const en: Dictionary = {
   },
   tagline: "Cleaning services in Essen",
   nav: { home: "Home", about: "About us", services: "Services", why: "Why us", quote: "Quote", contact: "Contact" },
+  // One entry per content page – used for the page description and the teasers on the home page.
+  pages: {
+    about: {
+      description:
+        "Get to know Delta Gebäude Reinigung: your cleaning partner for hotels, homes, offices and glass surfaces in Essen and the surrounding area."
+    },
+    services: {
+      description:
+        "Hotel cleaning, house cleaning, office cleaning and window & glass cleaning in Essen – with a free quote for every service."
+    },
+    why: {
+      description:
+        "Quality, reliability, flexibility and transparent service: what you can count on when you choose Delta Gebäude Reinigung."
+    },
+    quote: {
+      description:
+        "Request your free, no-obligation quote for building cleaning in Essen – for households, offices, hotels and businesses."
+    },
+    contact: {
+      description:
+        "Call Delta Gebäude Reinigung, send us an email or use the contact form – we are there for you in Essen."
+    }
+  },
+  home: {
+    indexEyebrow: "At a glance",
+    indexTitle: "Everything about your cleaning",
+    indexLead: "All information about our service – from the services we offer to your free quote.",
+    introEyebrow: "About us",
+    ctaTitle: "Ready for clean rooms?",
+    ctaText: "Tell us briefly what you need – we will get back to you with a free quote, no obligation.",
+    more: "Learn more"
+  },
   cta: {
     quote: "Free quote",
     freeQuote: "Request a free quote",

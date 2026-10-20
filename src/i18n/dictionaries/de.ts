@@ -30,6 +30,39 @@ const de = {
   },
   tagline: "Reinigungsservice in Essen",
   nav: { home: "Start", about: "Über uns", services: "Leistungen", why: "Warum wir", quote: "Angebot", contact: "Kontakt" },
+  // One entry per content page – used for the page description and the teasers on the home page.
+  pages: {
+    about: {
+      description:
+        "Lernen Sie Delta Gebäude Reinigung kennen: Ihr Reinigungspartner für Hotels, Wohnhäuser, Büros und Glasflächen in Essen und Umgebung."
+    },
+    services: {
+      description:
+        "Hotelreinigung, Hausreinigung, Büroreinigung sowie Fenster- und Glasreinigung in Essen – für jede Leistung ein kostenloses, unverbindliches Angebot."
+    },
+    why: {
+      description:
+        "Qualität, Zuverlässigkeit, Flexibilität und transparenter Service: Darauf können Sie sich bei Delta Gebäude Reinigung verlassen."
+    },
+    quote: {
+      description:
+        "Fordern Sie kostenlos und unverbindlich Ihr Angebot für Gebäudereinigung in Essen an – für Privathaushalte, Büros, Hotels und Gewerbe."
+    },
+    contact: {
+      description:
+        "Rufen Sie Delta Gebäude Reinigung an, schreiben Sie eine E-Mail oder nutzen Sie das Kontaktformular – wir sind in Essen für Sie erreichbar."
+    }
+  },
+  home: {
+    indexEyebrow: "Auf einen Blick",
+    indexTitle: "Alles rund um Ihre Reinigung",
+    indexLead:
+      "Hier finden Sie alle Informationen zu unserem Service – von den Leistungen bis zum kostenlosen Angebot.",
+    introEyebrow: "Über uns",
+    ctaTitle: "Bereit für saubere Räume?",
+    ctaText: "Schildern Sie uns kurz Ihren Bedarf – wir melden uns mit einem kostenlosen, unverbindlichen Angebot.",
+    more: "Mehr erfahren"
+  },
   cta: {
     quote: "Kostenloses Angebot",
     freeQuote: "Kostenloses Angebot anfordern",

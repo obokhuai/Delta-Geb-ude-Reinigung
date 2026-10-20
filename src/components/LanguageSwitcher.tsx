@@ -2,16 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { legalSlugs, locales, type Locale } from "@/i18n/config";
+import { locales, translateSlug, type Locale } from "@/i18n/config";
 
-/** Maps the current path to the same page in another language (incl. translated legal slugs). */
+/** Maps the current path to the same page in another language (incl. translated slugs). */
 export function translatePath(pathname: string, target: Locale) {
   const parts = pathname.split("/").filter(Boolean);
   const rest = parts.slice(1);
   if (rest[0]) {
-    for (const slugs of Object.values(legalSlugs)) {
-      if (Object.values(slugs).includes(rest[0] as never)) rest[0] = slugs[target];
-    }
+    const translated = translateSlug(rest[0], target);
+    if (translated) rest[0] = translated;
   }
   return "/" + [target, ...rest].join("/");
 }

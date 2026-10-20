@@ -3,6 +3,7 @@
 Next.js 15 (App Router) + TypeScript website for Delta Gebäude Reinigung, Essen.
 
 - German (`/de`) and English (`/en`) pages, with translated Impressum and privacy pages
+- Every entry in the header has its own page (about, services, why us, quote, contact)
 - Light / dark mode (follows the visitor's system setting, remembers their choice)
 - Quote and contact forms with validation in the browser **and** on the server, a spam trap and rate limiting
 - Form messages are sent by email (SMTP)
@@ -32,7 +33,33 @@ npm run dev                  # open http://localhost:3000
 Values written in `[square brackets]` are placeholders. They appear highlighted in yellow on the site until you replace them.
 **The Impressum must be complete before the site goes live** (German law, § 5 DDG).
 
-## 3. Make the forms deliver email
+## 3. The pages
+
+The header has five entries, each one leads to its own page:
+
+| Header entry | German URL | English URL |
+|---|---|---|
+| Über uns | `/de/ueber-uns` | `/en/about-us` |
+| Leistungen | `/de/leistungen` | `/en/services` |
+| Warum wir | `/de/warum-wir` | `/en/why-us` |
+| Angebot | `/de/angebot` | `/en/quote` |
+| Kontakt | `/de/kontakt` | `/en/contact` |
+
+The home page keeps the photo slideshow, the company introduction, the managing director and an
+overview card for every page. The content itself lives on the pages listed above – that way no text
+is duplicated across two URLs.
+
+| What | File |
+|---|---|
+| URL slugs (per language) | `pageSlugs` in `src/i18n/config.ts` |
+| Which page shows which section | `src/components/pages.tsx` |
+| The sections themselves | `src/components/sections.tsx` |
+| Intro text of a page (SEO description) | `pages` in `src/i18n/dictionaries/de.ts` / `en.ts` |
+
+Renaming a slug is a one-line change in `pageSlugs`; the header, footer, language switcher,
+`sitemap.xml` and all links follow automatically.
+
+## 4. Make the forms deliver email
 
 Set these environment variables (in `.env.local` locally, or in your hosting dashboard):
 
@@ -49,10 +76,11 @@ Set these environment variables (in `.env.local` locally, or in your hosting das
 Until `SMTP_HOST` is set, the forms still check what visitors type, then show the phone number and email address
 with a button to copy their request – no request is silently lost.
 
-## 4. Photos and the home page slideshow
+## 5. Photos and the home page slideshow
 
 The home page opens with a slideshow that changes every **5 seconds**. Each slide shows a photo and a message for one
-service (general, office, hotel, house, glass), with a button that opens the quote form with that service already chosen.
+service (general, office, hotel, house, glass), with a button that leads to the quote page with that service already
+chosen (the service travels in the URL, e.g. `/de/angebot?service=hotel`).
 Visitors can pause it, use the arrows or dots, or swipe on mobile. It also pauses on mouse hover, while a keyboard user is
 inside it, and while the browser tab is hidden.
 
@@ -72,7 +100,7 @@ nobody is misled. Replacing them with photos of your own team is the best thing 
 
 Get written consent from anyone who appears in your photos.
 
-## 5. Deploy
+## 6. Deploy
 
 The site needs a Node.js server for the form API.
 
@@ -87,14 +115,19 @@ After deploying, update the hosting provider in `src/config/site.ts` and the pri
 src/
   app/
     [lang]/layout.tsx        page shell, metadata, structured data
-    [lang]/page.tsx          home page (all sections)
-    [lang]/[slug]/page.tsx   Impressum / Datenschutz (DE + EN slugs)
+    [lang]/page.tsx          home page (slideshow, intro, CEO, page overview)
+    [lang]/[slug]/page.tsx   content pages + Impressum / Datenschutz (DE + EN slugs)
     api/contact/route.ts     form endpoint → email
     sitemap.ts, robots.ts
     globals.css              design tokens + styles
-  components/                Header, Footer, sections, forms, icons, illustrations
+  components/
+    Header.tsx, Footer.tsx    navigation (one page per entry)
+    sections.tsx             the content blocks (headline optional)
+    pages.tsx                which block belongs to which page
+    QuoteForm.tsx            … plus the other forms, icons, illustrations
   config/site.ts             company details
-  i18n/                      languages and translations
+  config/images.ts           photos
+  i18n/                      languages, URL slugs and translations
   lib/validation.ts          shared form validation
   middleware.ts              redirects / to /de or /en
 ```

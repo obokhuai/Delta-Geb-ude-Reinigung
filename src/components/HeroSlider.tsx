@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import type { Locale } from "@/i18n/config";
+import { pagePath } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/de";
 import type { SiteImage } from "@/config/images";
 import type { ServiceId } from "@/lib/validation";
 import { site } from "@/config/site";
 import { ArrowIcon, PhoneIcon, PinIcon } from "./icons";
-import { SERVICE_EVENT } from "./ServiceCta";
 
 /** Time each slide is shown, in milliseconds */
 export const SLIDE_INTERVAL = 5000;
@@ -125,17 +125,14 @@ export default function HeroSlider({ locale, hero, contactLabel, images }: Props
           </p>
           <p className="hero-lead">{slide.text}</p>
           <div className="hero-actions">
-            <a
+            <Link
               className="btn btn-primary"
-              href="#quote"
-              onClick={() => {
-                if (service) window.dispatchEvent(new CustomEvent(SERVICE_EVENT, { detail: service }));
-              }}
+              href={`${pagePath(locale, "quote")}${service ? `?service=${service}` : ""}`}
             >
               {slide.cta}
               <ArrowIcon size={18} />
-            </a>
-            <Link className="btn btn-on-photo" href={`/${locale}#contact`}>
+            </Link>
+            <Link className="btn btn-on-photo" href={pagePath(locale, "contact")}>
               {contactLabel}
             </Link>
           </div>

@@ -8,7 +8,6 @@ import { useInquiryForm } from "@/lib/use-inquiry-form";
 import { site } from "@/config/site";
 import { Consent, ErrorText, Honeypot, Required } from "./FormBits";
 import FormStatus from "./FormStatus";
-import { SERVICE_EVENT } from "./ServiceCta";
 
 interface Props {
   locale: Locale;
@@ -20,9 +19,35 @@ interface Props {
 /** Property type that matches a chosen service, used when a service card's button is clicked */
 const PROPERTY_FOR_SERVICE: Partial<Record<string, string>> = { hotel: "hotel", office: "office", house: "house" };
 
+/**
+ * Pre-selects the service from the URL (?service=hotel) – e.g. when a visitor
+ * follows "Angebot für Hotelreinigung" from the services page.
+ * The URL is read directly because a statically generated page has no search
+ * params in the router state on the first render.
+ */
+function ServiceFromUrl({ apply }: { apply: (id: string) => void }) {
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("service");
+    if (id) apply(id);
+  }, [apply]);
+  return null;
+}
+
 export default function QuoteForm({ locale, form, services, copy }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const subject = `${form.subjects.quote} – ${site.name}`;
+
+  const applyService = useCallback((id: string) => {
+    const el = formRef.current;
+    if (!el) return;
+    const select = el.elements.namedItem("service") as HTMLSelectElement | null;
+    if (select) select.value = id;
+    const prop = PROPERTY_FOR_SERVICE[id];
+    if (prop) {
+      const radio = el.querySelector<HTMLInputElement>(`input[name="property"][value="${prop}"]`);
+      if (radio) radio.checked = true;
+    }
+  }, []);
 
   const summarize = useCallback(
     (p: FormPayload) => {
@@ -43,30 +68,13 @@ export default function QuoteForm({ locale, form, services, copy }: Props) {
 
   const { errors, status, onSubmit, revalidate } = useInquiryForm("quote", locale, summarize);
 
-  // Pre-select the service when a "Request a quote" button on a service card is clicked.
-  useEffect(() => {
-    const onPick = (e: Event) => {
-      const id = (e as CustomEvent<string>).detail;
-      const el = formRef.current;
-      if (!el) return;
-      const select = el.elements.namedItem("service") as HTMLSelectElement | null;
-      if (select) select.value = id;
-      const prop = PROPERTY_FOR_SERVICE[id];
-      if (prop) {
-        const radio = el.querySelector<HTMLInputElement>(`input[name="property"][value="${prop}"]`);
-        if (radio) radio.checked = true;
-      }
-    };
-    window.addEventListener(SERVICE_EVENT, onPick);
-    return () => window.removeEventListener(SERVICE_EVENT, onPick);
-  }, []);
-
   const inv = (k: Parameters<typeof errors.has>[0]) => errors.has(k);
   const describe = (k: Parameters<typeof errors.has>[0], id: string) => (inv(k) ? `${id}-err` : undefined);
 
   return (
     <form ref={formRef} className="form-card reveal" noValidate onSubmit={onSubmit} onInput={revalidate} onChange={revalidate}>
       <Honeypot id="q-website" />
+      <ServiceFromUrl apply={applyService} />
       <div className="fields">
         <div className="field">
           <label htmlFor="q-name">{form.name}<Required /></label>

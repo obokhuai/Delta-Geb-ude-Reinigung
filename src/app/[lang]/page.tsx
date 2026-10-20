@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { About, Ceo, Contact, Hero, Quote, Services, WhyUs } from "@/components/sections";
+import { Ceo, Hero, HomeCta, HomeIntro, PageIndex } from "@/components/sections";
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -12,12 +12,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   return (
     <>
       <Hero {...props} />
-      <About {...props} />
+      <HomeIntro {...props} />
       <Ceo {...props} />
-      <Services {...props} />
-      <WhyUs {...props} />
-      <Quote {...props} />
-      <Contact {...props} />
+      <PageIndex {...props} />
+      <HomeCta {...props} />
     </>
   );
 }

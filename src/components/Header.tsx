@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/i18n/config";
+import { PAGE_IDS, pagePath } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/de";
 import { Logo } from "./illustrations";
 import { CloseIcon, MenuIcon } from "./icons";
@@ -16,20 +18,9 @@ interface Props {
 
 export default function Header({ locale, dict }: Props) {
   const [open, setOpen] = useState(false);
-  const [hash, setHash] = useState("");
+  const pathname = usePathname() || `/${locale}`;
   const btnRef = useRef<HTMLButtonElement>(null);
   const home = `/${locale}`;
-
-  useEffect(() => {
-    const sync = () => setHash(window.location.hash);
-    sync();
-    window.addEventListener("hashchange", sync);
-    window.addEventListener("popstate", sync);
-    return () => {
-      window.removeEventListener("hashchange", sync);
-      window.removeEventListener("popstate", sync);
-    };
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -43,13 +34,7 @@ export default function Header({ locale, dict }: Props) {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const links = [
-    { href: `${home}#about`, label: dict.nav.about },
-    { href: `${home}#services`, label: dict.nav.services },
-    { href: `${home}#why`, label: dict.nav.why },
-    { href: `${home}#quote`, label: dict.nav.quote },
-    { href: `${home}#contact`, label: dict.nav.contact }
-  ];
+  const links = PAGE_IDS.map((id) => ({ href: pagePath(locale, id), label: dict.nav[id] }));
 
   return (
     <header className="site-header">
@@ -70,11 +55,8 @@ export default function Header({ locale, dict }: Props) {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  aria-current={hash !== "" && l.href.endsWith(hash) ? "location" : undefined}
-                  onClick={() => {
-                    setHash(`#${l.href.split("#")[1]}`);
-                    setOpen(false);
-                  }}
+                  aria-current={pathname === l.href ? "location" : undefined}
+                  onClick={() => setOpen(false)}
                 >
                   {l.label}
                 </Link>
@@ -86,7 +68,7 @@ export default function Header({ locale, dict }: Props) {
         <div className="tools">
           <LanguageSwitcher locale={locale} label={dict.a11y.language} />
           <ThemeToggle labels={{ dark: dict.a11y.dark, light: dict.a11y.light }} />
-          <Link className="btn btn-primary btn-small header-cta" href={`${home}#quote`}>
+          <Link className="btn btn-primary btn-small header-cta" href={pagePath(locale, "quote")}>
             {dict.cta.quote}
           </Link>
           <button

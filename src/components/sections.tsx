@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Locale } from "@/i18n/config";
+import { PAGE_IDS, pagePath } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/de";
 import de from "@/i18n/dictionaries/de";
 import { isPlaceholder, mapsUrl, site } from "@/config/site";
@@ -22,7 +24,14 @@ import QuoteForm from "./QuoteForm";
 import ContactForm from "./ContactForm";
 import CopyButton from "./CopyButton";
 
-type SectionProps = { locale: Locale; dict: Dictionary };
+type SectionProps = {
+  locale: Locale;
+  dict: Dictionary;
+  /** Show the section's own heading (h2). Off when the section is used on its own page. */
+  head?: boolean;
+  /** Id of the section heading, used for aria-labelledby. */
+  titleId?: string;
+};
 
 const fullAddress = `${site.address.street}, ${site.address.postalCode} ${site.address.city}`;
 
@@ -63,7 +72,7 @@ export function Hero({ locale, dict }: SectionProps) {
   );
 }
 
-export function About({ locale, dict }: SectionProps) {
+export function About({ locale, dict, head = true, titleId = "about-title" }: SectionProps) {
   const { about } = dict;
   const values = [
     { key: "professionalism", Icon: ClipboardCheckIcon },
@@ -72,11 +81,15 @@ export function About({ locale, dict }: SectionProps) {
     { key: "satisfaction", Icon: ThumbIcon }
   ] as const;
   return (
-    <section className="band band-alt" id="about" aria-labelledby="about-title">
+    <section className="band band-alt" id="about" aria-labelledby={head ? titleId : undefined}>
       <div className="wrap about-grid">
         <div className="sec-head flush reveal">
-          <span className="eyebrow">{about.eyebrow}</span>
-          <h2 id="about-title">{about.title}</h2>
+          {head && (
+            <>
+              <span className="eyebrow">{about.eyebrow}</span>
+              <h2 id={titleId}>{about.title}</h2>
+            </>
+          )}
           <div className="about-text">
             {about.paragraphs.map((p) => (
               <p key={p}>{p}</p>
@@ -102,16 +115,18 @@ export function About({ locale, dict }: SectionProps) {
   );
 }
 
-export function Services({ locale, dict }: SectionProps) {
+export function Services({ locale, dict, head = true, titleId = "services-title" }: SectionProps) {
   const { services } = dict;
   return (
-    <section className="band" id="services" aria-labelledby="services-title">
+    <section className="band" id="services" aria-labelledby={head ? titleId : undefined}>
       <div className="wrap">
-        <div className="sec-head reveal">
-          <span className="eyebrow">{services.eyebrow}</span>
-          <h2 id="services-title">{services.title}</h2>
-          <p className="lead">{services.lead}</p>
-        </div>
+        {head && (
+          <div className="sec-head reveal">
+            <span className="eyebrow">{services.eyebrow}</span>
+            <h2 id={titleId}>{services.title}</h2>
+            <p className="lead">{services.lead}</p>
+          </div>
+        )}
         <div className="services">
           {SERVICE_IDS.map((id) => {
             const s = services.items[id];
@@ -133,7 +148,7 @@ export function Services({ locale, dict }: SectionProps) {
                   </span>
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>
-                  <ServiceCta service={id} label={dict.cta.request} />
+                  <ServiceCta service={id} label={dict.cta.request} locale={locale} />
                 </div>
               </article>
             );
@@ -152,16 +167,18 @@ const germanServiceName: Record<(typeof SERVICE_IDS)[number], string> = {
   general: "Allgemeine Reinigungsdienstleistungen"
 };
 
-export function WhyUs({ dict }: SectionProps) {
+export function WhyUs({ dict, head = true, titleId = "why-title" }: SectionProps) {
   const { why } = dict;
   return (
-    <section className="band why" id="why" aria-labelledby="why-title">
+    <section className="band why" id="why" aria-labelledby={head ? titleId : undefined}>
       <div className="wrap">
-        <div className="sec-head reveal">
-          <span className="eyebrow">{why.eyebrow}</span>
-          <h2 id="why-title">{why.title}</h2>
-          <p className="lead">{why.lead}</p>
-        </div>
+        {head && (
+          <div className="sec-head reveal">
+            <span className="eyebrow">{why.eyebrow}</span>
+            <h2 id={titleId}>{why.title}</h2>
+            <p className="lead">{why.lead}</p>
+          </div>
+        )}
         <div className="why-grid">
           {why.items.map((item) => (
             <div className="why-item reveal" key={item.title}>
@@ -184,17 +201,19 @@ export function WhyUs({ dict }: SectionProps) {
   );
 }
 
-export function Quote({ locale, dict }: SectionProps) {
+export function Quote({ locale, dict, head = true, titleId = "quote-title" }: SectionProps) {
   const { quote } = dict;
   return (
-    <section className="band" id="quote" aria-labelledby="quote-title">
+    <section className="band" id="quote" aria-labelledby={head ? titleId : undefined}>
       <div className="wrap form-grid">
         <div className="quote-aside reveal">
-          <div className="sec-head flush">
-            <span className="eyebrow">{quote.eyebrow}</span>
-            <h2 id="quote-title">{quote.title}</h2>
-            <p className="lead">{quote.lead}</p>
-          </div>
+          {head && (
+            <div className="sec-head flush">
+              <span className="eyebrow">{quote.eyebrow}</span>
+              <h2 id={titleId}>{quote.title}</h2>
+              <p className="lead">{quote.lead}</p>
+            </div>
+          )}
           <ul className="check-list">
             {quote.bullets.map((b) => (
               <li key={b}>
@@ -210,19 +229,21 @@ export function Quote({ locale, dict }: SectionProps) {
   );
 }
 
-export function Contact({ locale, dict }: SectionProps) {
+export function Contact({ locale, dict, head = true, titleId = "contact-title" }: SectionProps) {
   const { contact, copy } = dict;
   const hours = site.hours[locale];
   const copyProps = { label: copy.label, doneLabel: copy.done, failedLabel: copy.failed };
   return (
-    <section className="band band-alt" id="contact" aria-labelledby="contact-title">
+    <section className="band band-alt" id="contact" aria-labelledby={head ? titleId : undefined}>
       <div className="wrap form-grid">
         <div className="reveal">
-          <div className="sec-head" style={{ marginBottom: 16 }}>
-            <span className="eyebrow">{contact.eyebrow}</span>
-            <h2 id="contact-title">{contact.title}</h2>
-            <p className="lead">{contact.lead}</p>
-          </div>
+          {head && (
+            <div className="sec-head" style={{ marginBottom: 16 }}>
+              <span className="eyebrow">{contact.eyebrow}</span>
+              <h2 id={titleId}>{contact.title}</h2>
+              <p className="lead">{contact.lead}</p>
+            </div>
+          )}
           <address className="contact-list" style={{ fontStyle: "normal" }}>
             <div className="contact-item">
               <span className="ico"><PhoneIcon size={22} /></span>
@@ -295,6 +316,95 @@ export function Ceo({ locale, dict }: SectionProps) {
             </a>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Standalone pages
+   --------------------------------------------------------------------------- */
+
+/** Heading of a content page (h1) – the sections below it render without their own head. */
+export function PageHead({
+  eyebrow,
+  title,
+  lead,
+  titleId = "page-title"
+}: {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  titleId?: string;
+}) {
+  return (
+    <header className="page-head">
+      <div className="wrap">
+        <span className="eyebrow">{eyebrow}</span>
+        <h1 id={titleId}>{title}</h1>
+        {lead && <p className="lead">{lead}</p>}
+      </div>
+    </header>
+  );
+}
+
+/** Home page teaser that points to the "about us" page. */
+export function HomeIntro({ locale, dict }: SectionProps) {
+  const { about, home, nav } = dict;
+  return (
+    <section className="band" aria-labelledby="intro-title">
+      <div className="wrap intro-grid">
+        <div className="sec-head flush reveal">
+          <span className="eyebrow">{home.introEyebrow}</span>
+          <h2 id="intro-title">{about.title}</h2>
+        </div>
+        <div className="intro-text reveal">
+          <p>{about.paragraphs[0]}</p>
+          <Link className="btn btn-ghost" href={pagePath(locale, "about")}>
+            {nav.about}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Home page overview: one card per content page. */
+export function PageIndex({ locale, dict }: SectionProps) {
+  const { home, nav, pages } = dict;
+  return (
+    <section className="band band-alt" aria-labelledby="index-title">
+      <div className="wrap">
+        <div className="sec-head reveal">
+          <span className="eyebrow">{home.indexEyebrow}</span>
+          <h2 id="index-title">{home.indexTitle}</h2>
+          <p className="lead">{home.indexLead}</p>
+        </div>
+        <div className="page-cards">
+          {PAGE_IDS.map((id) => (
+            <Link key={id} className="page-card reveal" href={pagePath(locale, id)}>
+              <h3>{nav[id]}</h3>
+              <p>{pages[id].description}</p>
+              <span className="page-card-go">{home.more} →</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Closing call to action on the home page. */
+export function HomeCta({ locale, dict }: SectionProps) {
+  const { home, cta } = dict;
+  return (
+    <section className="band home-cta">
+      <div className="wrap">
+        <h2>{home.ctaTitle}</h2>
+        <p>{home.ctaText}</p>
+        <Link className="btn btn-primary" href={pagePath(locale, "quote")}>
+          {cta.quote}
+        </Link>
       </div>
     </section>
   );

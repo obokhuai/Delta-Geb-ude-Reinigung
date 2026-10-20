@@ -236,6 +236,38 @@ p { margin: 0; }
 .sec-head { display: grid; gap: 14px; margin-bottom: clamp(28px, 4vw, 48px); max-width: 720px; }
 .sec-head.flush { margin-bottom: 0; }
 
+/* Standalone pages */
+.page-head { background: var(--surface-2); border-bottom: 1px solid var(--line); padding-block: clamp(36px, 6vw, 72px); }
+.page-head .wrap { display: grid; gap: 12px; }
+.page-head h1 { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+.page-head .lead { margin-top: 4px; }
+
+/* Home page: intro teaser */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+.intro-grid > * { min-width: 0; }
+.intro-text { display: grid; gap: 20px; justify-items: start; }
+.intro-text p { color: var(--muted); font-size: 1.1rem; max-width: 52ch; }
+@media (max-width: 860px) { .intro-grid { grid-template-columns: 1fr; } }
+
+/* Home page: overview cards */
+.page-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.page-card {
+  display: grid; grid-template-rows: auto 1fr auto; gap: 8px; background: var(--bg);
+  border: 1px solid var(--line); border-radius: var(--r); padding: 24px; text-decoration: none; color: var(--fg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.page-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--link); }
+.page-card h3 { font-size: 1.2rem; }
+.page-card p { color: var(--muted); font-size: 0.98rem; }
+.page-card-go { color: var(--link); font-weight: 600; font-size: 0.95rem; margin-top: 4px; }
+@media (max-width: 900px) { .page-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .page-cards { grid-template-columns: 1fr; } }
+
+/* Home page: closing call to action */
+.home-cta { background: var(--petrol); color: var(--petrol-ink); }
+.home-cta .wrap { display: grid; gap: 16px; justify-items: center; text-align: center; }
+.home-cta p { color: color-mix(in srgb, var(--petrol-ink) 82%, transparent); max-width: 52ch; }
+
 /* About */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
 .about-grid > * { min-width: 0; }
