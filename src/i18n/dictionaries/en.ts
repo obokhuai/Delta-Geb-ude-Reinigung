@@ -229,7 +229,6 @@ const en: Dictionary = {
     lead: "Have a question or want to arrange a date? Call us, write to us or use the form.",
     phone: "Phone",
     whatsapp: "WhatsApp",
-    fax: "Fax",
     email: "Email",
     address: "Address",
     map: "Open in Google Maps",

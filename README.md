@@ -24,7 +24,7 @@ npm run dev                  # open http://localhost:3000
 
 | What | File |
 |---|---|
-| Address, phone, **WhatsApp number**, **fax**, e-mail, owner, VAT ID, hours, hosting provider | `src/config/site.ts` |
+| Address, phone, **WhatsApp number**, e-mail, owner, VAT ID, hours, hosting provider | `src/config/site.ts` |
 | All German texts | `src/i18n/dictionaries/de.ts` |
 | All English texts | `src/i18n/dictionaries/en.ts` |
 | Colours and fonts | top of `src/app/globals.css` || Logo (DELTA mark) | `src/components/illustrations.tsx` |

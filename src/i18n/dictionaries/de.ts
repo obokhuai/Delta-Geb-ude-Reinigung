@@ -230,7 +230,6 @@ const de = {
     lead: "Sie haben eine Frage oder möchten direkt einen Termin abstimmen? Rufen Sie an, schreiben Sie uns oder nutzen Sie das Formular.",
     phone: "Telefon",
     whatsapp: "WhatsApp",
-    fax: "Fax",
     email: "E-Mail",
     address: "Adresse",
     map: "In Google Maps öffnen",

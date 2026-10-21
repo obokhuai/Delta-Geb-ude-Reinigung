@@ -428,6 +428,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .foot-grid a { color: var(--fg); text-decoration: none; overflow-wrap: anywhere; }
 .foot-grid a:hover { color: var(--link); text-decoration: underline; }
+.foot-contact li { display: flex; align-items: flex-start; gap: 9px; }
+.foot-ico { color: var(--link); flex: none; display: inline-flex; padding-top: 2px; }
 .foot-brand p { color: var(--muted); margin-top: 12px; max-width: 36ch; }
 .foot-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 0.88rem; }
 @media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr 1fr; } }

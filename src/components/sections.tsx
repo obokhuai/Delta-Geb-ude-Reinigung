@@ -15,7 +15,6 @@ import {
   ClipboardCheckIcon,
   ClockIcon,
   ExternalIcon,
-  FaxIcon,
   MailIcon,
   PhoneIcon,
   PinIcon,
@@ -284,14 +283,6 @@ export function Contact({ locale, dict, head = true, titleId = "contact-title" }
                 </div>
               </div>
               <CopyButton text={site.whatsapp.display} {...copyProps} />
-            </div>
-            <div className="contact-item">
-              <span className="ico"><FaxIcon size={22} /></span>
-              <div>
-                <div className="k">{contact.fax}</div>
-                <div className="v">{site.fax.display}</div>
-              </div>
-              <CopyButton text={site.fax.display} {...copyProps} />
             </div>
             <div className="contact-item">
               <span className="ico"><MailIcon size={22} /></span>

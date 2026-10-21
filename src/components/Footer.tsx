@@ -4,6 +4,7 @@ import type { Dictionary } from "@/i18n/dictionaries/de";
 import { site } from "@/config/site";
 import { Logo } from "./illustrations";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "./icons";
 
 export default function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const home = `/${locale}`;
@@ -30,20 +31,29 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
           </div>
           <div>
             <h2>{footer.contact}</h2>
-            <ul>
+            <ul className="foot-contact">
               <li>
-                {site.address.street}
-                <br />
-                {site.address.postalCode} {site.address.city}
+                <span className="foot-ico"><PinIcon size={17} /></span>
+                <span>
+                  {site.address.street}
+                  <br />
+                  {site.address.postalCode} {site.address.city}
+                </span>
               </li>
-              <li><a href={site.phone.href}>{site.phone.display}</a></li>
               <li>
+                <span className="foot-ico"><PhoneIcon size={17} /></span>
+                <a href={site.phone.href}>{site.phone.display}</a>
+              </li>
+              <li>
+                <span className="foot-ico"><WhatsAppIcon size={17} /></span>
                 <a href={site.whatsapp.href} target="_blank" rel="noopener noreferrer">
                   WhatsApp {site.whatsapp.display}
                 </a>
               </li>
-              <li>Fax {site.fax.display}</li>
-              <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              <li>
+                <span className="foot-ico"><MailIcon size={17} /></span>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </li>
             </ul>
           </div>
           <div>

@@ -84,11 +84,3 @@ export const VacuumIcon = (p: IconProps) => (
     <circle cx="7" cy="17" r="1.6" />
   </Icon>
 );
-export const FaxIcon = (p: IconProps) => (
-  <Icon {...p}>
-    <path d="M7 9V3h10v6" />
-    <path d="M6.5 18H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.5" />
-    <rect x="7" y="14" width="10" height="7" rx="1" />
-    <path d="M17.5 11.5h.01" />
-  </Icon>
-);
