@@ -24,14 +24,37 @@ npm run dev                  # open http://localhost:3000
 
 | What | File |
 |---|---|
-| Address, phone, **WhatsApp number**, e-mail, owner, VAT ID, hours, hosting provider | `src/config/site.ts` |
+| Address, phone, **WhatsApp number**, **fax**, e-mail, owner, VAT ID, hours, hosting provider | `src/config/site.ts` |
 | All German texts | `src/i18n/dictionaries/de.ts` |
 | All English texts | `src/i18n/dictionaries/en.ts` |
-| Colours and fonts | top of `src/app/globals.css` |
+| Colours and fonts | top of `src/app/globals.css` || Logo (DELTA mark) | `src/components/illustrations.tsx` |
 | Impressum / privacy wording | `src/components/LegalContent.tsx` |
 
 The WhatsApp number is used in three places: the floating WhatsApp button, the contact page and the footer.
 It is stored once in `site.whatsapp` – change it there and it updates everywhere.
+
+The logo is the DELTA mark from the flyer, drawn in the site's own palette: petrol teal for the house and the
+skyline, brass for the window and the sparkles, a teal gradient for the swoosh (`--logo-navy`, `--logo-blue`,
+`--logo-sky` – a lighter variant in the dark theme).
+The browser tab icon (`src/app/icon.svg`) is a simplified version of the same mark, drawn for small sizes.
+
+### The colours
+
+The site uses the **original palette: petrol teal and brass on white**. Every colour is a CSS variable at the top of
+`src/app/globals.css`; there are no ad-hoc colours anywhere else, so a change there changes the entire website.
+
+| Token | Light | Dark | Used for |
+|---|---|---|---|
+| `--petrol` | `#0f4652` | `#0b3a44` | Dark bands ("Warum wir", CTA), dark buttons |
+| `--brass` | `#e9b23c` | `#f0c25e` | Primary button, hero underline, dots, step numbers, icons |
+| `--link` | `#0d6273` | `#7fd0da` | Links, eyebrows, focus ring |
+| `--bg` / `--surface` / `--surface-2` | `#f6f8f8` / `#ffffff` / `#e9f0f1` | `#0c1619` / `#122126` / `#17292f` | Backgrounds |
+| `--fg` / `--muted` / `--line` | `#12262b` / `#4c6268` / `#d3dfe1` | `#e4eeef` / `#9db3b8` / `#26393f` | Text and borders |
+
+The logo uses the same palette: petrol teal for the house and skyline, brass for the window and sparkles,
+a teal gradient for the swoosh. Two colours stay outside the palette on purpose: WhatsApp green (`#25d366`)
+for the WhatsApp button and the green/red of the form notices – they belong to WhatsApp and to the meaning of
+the message, not to the brand.
 
 Values written in `[square brackets]` are placeholders. They appear highlighted in yellow on the site until you replace them.
 **The Impressum must be complete before the site goes live** (German law, § 5 DDG).
@@ -80,6 +103,11 @@ Until `SMTP_HOST` is set, the forms still check what visitors type, then show th
 with a button to copy their request – no request is silently lost.
 
 ## 5. Photos and the home page slideshow
+
+The site offers seven services: Hotel-, Haus-, Büro-, Glas- und allgemeine Reinigung sowie **Unterhaltsreinigung**
+and **Grundreinigung**. The first five have a photo, the two new ones use an icon from the flyer
+(`serviceImages` in `src/config/images.ts`, `serviceIcons` in `src/components/sections.tsx`).
+To add a photo for a service later, put it in `public/images/` and add it to `serviceImages`.
 
 The home page opens with a slideshow that changes every **5 seconds**. Each slide shows a photo and a message for one
 service (general, office, hotel, house, glass), with a button that leads to the quote page with that service already

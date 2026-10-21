@@ -29,7 +29,7 @@ const en: Dictionary = {
     whatsapp: "Chat on WhatsApp",
     call: "Call us directly"
   },
-  tagline: "Cleaning services in Essen",
+  tagline: "Cleanliness creates a feeling of well-being!",
   nav: { home: "Home", about: "About us", services: "Services", why: "Why us", quote: "Quote", contact: "Contact" },
   // One entry per content page – used for the page description and the teasers on the home page.
   pages: {
@@ -59,7 +59,7 @@ const en: Dictionary = {
     indexTitle: "Everything about your cleaning",
     indexLead: "All information about our service – from the services we offer to your free quote.",
     introEyebrow: "About us",
-    ctaTitle: "Ready for clean rooms?",
+    ctaTitle: "Clean rooms – a good feeling!",
     ctaText: "Tell us briefly what you need – we will get back to you with a free quote, no obligation.",
     more: "Learn more"
   },
@@ -181,12 +181,22 @@ const en: Dictionary = {
       glass: {
         short: "Glass",
         title: "Window & glass cleaning",
-        text: "Streak-free cleaning of windows, glass doors, glass facades, shop windows and conservatories, including frames and sills."
+        text: "Streak-free cleaning of windows, glass doors, glass facades, shop windows and conservatories – for private and commercial properties, including frames and sills."
+      },
+      maintenance: {
+        short: "Maintenance",
+        title: "Maintenance cleaning",
+        text: "For permanently clean rooms and a well-kept appearance – reliably at fixed intervals, whether daily, weekly or monthly."
+      },
+      deep: {
+        short: "Deep clean",
+        title: "Basic cleaning",
+        text: "Thorough, reliable, professional: an intensive clean from the ground up – for example after moving out, after renovation or after a long period without cleaning."
       },
       general: {
         short: "General",
         title: "General cleaning",
-        text: "Have a cleaning need that doesn't fit a category? Describe it to us and we'll put together a solution that matches your requirements."
+        text: "Everything that comes up in the office and at home: from regular cleaning to special cleaning – we take care of your premises."
       }
     }
   },
@@ -219,6 +229,7 @@ const en: Dictionary = {
     lead: "Have a question or want to arrange a date? Call us, write to us or use the form.",
     phone: "Phone",
     whatsapp: "WhatsApp",
+    fax: "Fax",
     email: "Email",
     address: "Address",
     map: "Open in Google Maps",

@@ -1,6 +1,6 @@
 /** Shared validation used by the browser forms and the API route. */
 
-export const SERVICE_IDS = ["hotel", "house", "office", "glass", "general"] as const;
+export const SERVICE_IDS = ["hotel", "house", "office", "glass", "maintenance", "deep", "general"] as const;
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
 export const PROPERTY_TYPES = ["apartment", "house", "office", "hotel", "commercial"] as const;

@@ -14,7 +14,7 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
         <div className="foot-grid">
           <div className="foot-brand">
             <Link className="brand" href={home}>
-              <Logo size={36} sparkle={false} />
+              <Logo size={54} />
               <span className="brand-name">{site.name}</span>
             </Link>
             <p>{footer.about}</p>
@@ -42,6 +42,7 @@ export default function Footer({ locale, dict }: { locale: Locale; dict: Diction
                   WhatsApp {site.whatsapp.display}
                 </a>
               </li>
+              <li>Fax {site.fax.display}</li>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             </ul>
           </div>

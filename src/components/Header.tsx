@@ -40,7 +40,7 @@ export default function Header({ locale, dict }: Props) {
     <header className="site-header">
       <div className="wrap bar">
         <Link className="brand" href={home} aria-label={dict.a11y.home}>
-          <Logo />
+          <Logo size={58} />
           <span className="brand-name">
             Delta
             <br />

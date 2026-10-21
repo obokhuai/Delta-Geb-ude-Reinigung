@@ -1,6 +1,9 @@
 /* Delta Gebäude Reinigung – design tokens and global styles.
    Layout: sticky bar, full-bleed photo slideshow hero with a facts strip,
-   then alternating bands; one petrol band carries the strongest contrast. */
+   then alternating bands; one petrol band carries the strongest contrast.
+
+   Every colour on the site comes from the tokens below – there are no ad-hoc
+   colours anywhere else. The logo keeps its own flyer colours (--logo-*). */
 
 :root {
   --bg: #f6f8f8;
@@ -20,6 +23,10 @@
   --shadow: 0 1px 2px rgb(15 70 82 / 0.06), 0 8px 24px rgb(15 70 82 / 0.08);
   --font-display: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
   --font-body: "Figtree Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Logo colours – the site's own palette */
+  --logo-navy: #0f4652;
+  --logo-blue: #e9b23c;
+  --logo-sky: #8fd3d6;
   --r: 14px;
   --max: 1160px;
   --header-h: 68px;
@@ -30,6 +37,7 @@
     --bg: #0c1619; --surface: #122126; --surface-2: #17292f; --fg: #e4eeef; --muted: #9db3b8;
     --line: #26393f; --petrol: #0b3a44; --petrol-ink: #eef7f8; --brass: #f0c25e; --brass-ink: #1d1600;
     --aqua: #3f8f94; --link: #7fd0da; --ok: #5fc58f; --err: #ff8a80;
+    --logo-navy: #57a7b5; --logo-blue: #f0c25e; --logo-sky: #7cc4cd;
     --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.3);
     color-scheme: dark;
   }
@@ -38,6 +46,7 @@
   --bg: #0c1619; --surface: #122126; --surface-2: #17292f; --fg: #e4eeef; --muted: #9db3b8;
   --line: #26393f; --petrol: #0b3a44; --petrol-ink: #eef7f8; --brass: #f0c25e; --brass-ink: #1d1600;
   --aqua: #3f8f94; --link: #7fd0da; --ok: #5fc58f; --err: #ff8a80;
+  --logo-navy: #57a7b5; --logo-blue: #f0c25e; --logo-sky: #7cc4cd;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.3);
   color-scheme: dark;
 }
@@ -305,7 +314,7 @@ p { margin: 0; }
 /* Services */
 .services { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
 .svc { grid-column: span 2; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; min-width: 0; }
-.svc:nth-child(4), .svc:nth-child(5) { grid-column: span 3; }
+.svc:nth-child(n + 4) { grid-column: span 3; }
 .svc:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .svc-art { background: var(--surface-2); aspect-ratio: 16 / 9; max-width: 100%; display: grid; place-items: center; color: var(--link); position: relative; overflow: hidden; }
 .svc-art svg { width: 78%; height: 78%; }
@@ -317,7 +326,7 @@ p { margin: 0; }
 .svc-body .btn { margin-top: auto; align-self: flex-start; }
 @media (max-width: 960px) {
   .services { grid-template-columns: 1fr 1fr; }
-  .svc, .svc:nth-child(4), .svc:nth-child(5) { grid-column: span 1; }
+  .svc, .svc:nth-child(n + 4) { grid-column: span 1; }
   .svc:nth-child(5) { grid-column: 1 / -1; }
 }
 @media (max-width: 620px) {

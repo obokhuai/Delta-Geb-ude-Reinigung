@@ -1,24 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactElement } from "react";
 import type { Locale } from "@/i18n/config";
 import { PAGE_IDS, pagePath } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/de";
 import de from "@/i18n/dictionaries/de";
 import { isPlaceholder, mapsUrl, site } from "@/config/site";
 import { aboutImage, heroImages, serviceImages } from "@/config/images";
-import { SERVICE_IDS } from "@/lib/validation";
+import { SERVICE_IDS, type ServiceId } from "@/lib/validation";
 import HeroSlider from "./HeroSlider";
 import {
+  BucketMopIcon,
   CheckIcon,
   ClipboardCheckIcon,
   ClockIcon,
   ExternalIcon,
+  FaxIcon,
   MailIcon,
   PhoneIcon,
   PinIcon,
   SearchIcon,
   ThumbIcon,
-  WhatsAppIcon
+  VacuumIcon,
+  WhatsAppIcon,
+  type IconProps
 } from "./icons";
 import ServiceCta from "./ServiceCta";
 import QuoteForm from "./QuoteForm";
@@ -131,16 +136,22 @@ export function Services({ locale, dict, head = true, titleId = "services-title"
         <div className="services">
           {SERVICE_IDS.map((id) => {
             const s = services.items[id];
+            const img = serviceImages[id];
+            const Icon = serviceIcons[id];
             return (
               <article className="svc reveal" key={id}>
                 <div className="svc-art">
-                  <Image
-                    src={serviceImages[id].src}
-                    alt={serviceImages[id].alt[locale]}
-                    fill
-                    sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 400px"
-                    quality={70}
-                  />
+                  {img ? (
+                    <Image
+                      src={img.src}
+                      alt={img.alt[locale]}
+                      fill
+                      sizes="(max-width: 620px) 100vw, (max-width: 960px) 50vw, 400px"
+                      quality={70}
+                    />
+                  ) : (
+                    Icon && <Icon size={64} />
+                  )}
                 </div>
                 <div className="svc-body">
                   {/* German service name is always shown – it is what customers in Essen search for */}
@@ -160,12 +171,20 @@ export function Services({ locale, dict, head = true, titleId = "services-title"
   );
 }
 
+/** Services without a photo get the icon from the DELTA flyer. */
+const serviceIcons: Partial<Record<ServiceId, (p: IconProps) => ReactElement>> = {
+  maintenance: BucketMopIcon,
+  deep: VacuumIcon
+};
+
 const germanServiceName: Record<(typeof SERVICE_IDS)[number], string> = {
   hotel: de.services.items.hotel.title,
   house: de.services.items.house.title,
   office: de.services.items.office.title,
-  glass: "Glasreinigung",
-  general: "Allgemeine Reinigungsdienstleistungen"
+  glass: de.services.items.glass.title,
+  maintenance: de.services.items.maintenance.title,
+  deep: de.services.items.deep.title,
+  general: de.services.items.general.title
 };
 
 export function WhyUs({ dict, head = true, titleId = "why-title" }: SectionProps) {
@@ -265,6 +284,14 @@ export function Contact({ locale, dict, head = true, titleId = "contact-title" }
                 </div>
               </div>
               <CopyButton text={site.whatsapp.display} {...copyProps} />
+            </div>
+            <div className="contact-item">
+              <span className="ico"><FaxIcon size={22} /></span>
+              <div>
+                <div className="k">{contact.fax}</div>
+                <div className="v">{site.fax.display}</div>
+              </div>
+              <CopyButton text={site.fax.display} {...copyProps} />
             </div>
             <div className="contact-item">
               <span className="ico"><MailIcon size={22} /></span>

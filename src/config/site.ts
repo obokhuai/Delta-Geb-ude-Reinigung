@@ -25,7 +25,13 @@ export const site = {
     number: "4915211963058",
     href: "https://wa.me/4915211963058"
   },
-  email: "onyiberecycling@yahoo.com",
+  email: "deltareinigung@yahoo.com",
+
+  // Fax – number taken from the DELTA flyer
+  fax: {
+    display: "0152 11963058",
+    href: "tel:+4915211963058"
+  },
 
   // Legal notice (Impressum) – required by German law
   owner: "[Inhaber/in bzw. Geschäftsführer/in]",

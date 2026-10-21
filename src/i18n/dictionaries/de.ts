@@ -28,7 +28,7 @@ const de = {
     whatsapp: "Auf WhatsApp chatten",
     call: "Direkt anrufen"
   },
-  tagline: "Reinigungsservice in Essen",
+  tagline: "Sauberkeit schafft Wohlbefinden!",
   nav: { home: "Start", about: "Über uns", services: "Leistungen", why: "Warum wir", quote: "Angebot", contact: "Kontakt" },
   // One entry per content page – used for the page description and the teasers on the home page.
   pages: {
@@ -59,7 +59,7 @@ const de = {
     indexLead:
       "Hier finden Sie alle Informationen zu unserem Service – von den Leistungen bis zum kostenlosen Angebot.",
     introEyebrow: "Über uns",
-    ctaTitle: "Bereit für saubere Räume?",
+    ctaTitle: "Saubere Räume – ein gutes Gefühl!",
     ctaText: "Schildern Sie uns kurz Ihren Bedarf – wir melden uns mit einem kostenlosen, unverbindlichen Angebot.",
     more: "Mehr erfahren"
   },
@@ -182,12 +182,22 @@ const de = {
       glass: {
         short: "Glas",
         title: "Fenster- und Glasreinigung",
-        text: "Streifenfreie Reinigung von Fenstern, Glastüren, Glasfassaden, Schaufenstern und Wintergärten – inklusive Rahmen und Fensterbänke."
+        text: "Streifenfreie Reinigung von Fenstern, Glastüren, Glasfassaden, Schaufenstern und Wintergärten – im privaten und gewerblichen Bereich, inklusive Rahmen und Fensterbänke."
+      },
+      maintenance: {
+        short: "Unterhalt",
+        title: "Unterhaltsreinigung",
+        text: "Für dauerhaft saubere Räume und ein gepflegtes Erscheinungsbild – zuverlässig in festen Intervallen, ob täglich, wöchentlich oder monatlich."
+      },
+      deep: {
+        short: "Grund",
+        title: "Grundreinigung",
+        text: "Gründlich, zuverlässig, professionell: eine intensive Reinigung von Grund auf – etwa nach Auszug, nach Renovierung oder nach längerer Zeit ohne Reinigung."
       },
       general: {
         short: "Allgemein",
         title: "Allgemeine Reinigung",
-        text: "Sie haben einen Reinigungsbedarf, der nicht in eine Kategorie passt? Beschreiben Sie ihn uns – wir stellen eine Lösung zusammen, die zu Ihren Anforderungen passt."
+        text: "Alles was im Büro und Haus anfällt: von der regelmäßigen Reinigung bis zur Sonderreinigung – wir kümmern uns um Ihre Räumlichkeiten."
       }
     }
   },
@@ -220,6 +230,7 @@ const de = {
     lead: "Sie haben eine Frage oder möchten direkt einen Termin abstimmen? Rufen Sie an, schreiben Sie uns oder nutzen Sie das Formular.",
     phone: "Telefon",
     whatsapp: "WhatsApp",
+    fax: "Fax",
     email: "E-Mail",
     address: "Adresse",
     map: "In Google Maps öffnen",

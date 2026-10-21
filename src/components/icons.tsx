@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-type IconProps = SVGProps<SVGSVGElement> & { size?: number };
+export type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
 function Icon({ size = 20, children, strokeWidth = 2, ...rest }: IconProps) {
   return (
@@ -58,12 +58,37 @@ export const WhatsAppIcon = ({ size = 20, ...rest }: IconProps) => (
   </svg>
 );
 
-/* Value icons (About section) */
-export const ClipboardCheckIcon = (p: IconProps) => (
+/* Value icons (About section) */export const ClipboardCheckIcon = (p: IconProps) => (
   <Icon {...p}><path d="M20 7H4M16 3v4M8 3v4" /><rect x="3" y="5" width="18" height="16" rx="2" /><path d="m9 14 2 2 4-4" /></Icon>
 );
 export const ClockIcon = (p: IconProps) => <Icon {...p}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></Icon>;
 export const SearchIcon = (p: IconProps) => <Icon {...p}><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></Icon>;
 export const ThumbIcon = (p: IconProps) => (
   <Icon {...p}><path d="M7 11v9H4v-9zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 17.8 20H7" /></Icon>
+);
+
+/* Service icons (from the DELTA flyer) */
+export const BucketMopIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3 12h8l-1 8H4z" />
+    <path d="M2 9.5h10" />
+    <path d="M16 3.5 10.5 9" />
+    <path d="M8.5 11h4.5l-1.2 4H9.7z" />
+  </Icon>
+);
+export const VacuumIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3.5 15.5A5.5 5.5 0 0 1 9 10h1.5a5.5 5.5 0 0 1 5.5 5.5V20h-13z" />
+    <path d="M16 14.5 20 10" />
+    <path d="m18.5 7.5 4 4" />
+    <circle cx="7" cy="17" r="1.6" />
+  </Icon>
+);
+export const FaxIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M7 9V3h10v6" />
+    <path d="M6.5 18H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.5" />
+    <rect x="7" y="14" width="10" height="7" rx="1" />
+    <path d="M17.5 11.5h.01" />
+  </Icon>
 );

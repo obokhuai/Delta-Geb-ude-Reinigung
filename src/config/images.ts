@@ -66,8 +66,8 @@ export const heroImages: SiteImage[] = [
   }
 ];
 
-/** Service cards */
-export const serviceImages: Record<ServiceId, SiteImage> = {
+/** Service cards – only the services that have a photo. The rest use an icon. */
+export const serviceImages: Partial<Record<ServiceId, SiteImage>> = {
   hotel: {
     src: pexels(9462742),
     alt: { de: "Zimmerpersonal wechselt die Bettwäsche im Hotelzimmer", en: "Housekeepers changing the bedding in a hotel room" },
