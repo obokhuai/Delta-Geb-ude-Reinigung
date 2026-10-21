@@ -153,7 +153,7 @@ const en: Dictionary = {
     title: "Your personal point of contact",
     role: "Managing Director (CEO), Delta Gebäude Reinigung",
     photoAlt: "Portrait of the managing director of Delta Gebäude Reinigung",
-    quote: "Cleanliness is a matter of trust. That's why I take the time to understand exactly what you need – and we deliver what we agree.",
+    quote: "Cleanliness is a matter of trust. That's why we take the time to understand exactly what you need – and we deliver what we agree.",
     text: "At Delta Gebäude Reinigung you speak directly with the management. Whether you'd like a quote, want to arrange a date or have feedback: call or send an email.",
     call: "Call",
     write: "Send email"

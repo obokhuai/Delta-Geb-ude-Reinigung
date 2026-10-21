@@ -154,7 +154,7 @@ const de = {
     role: "Geschäftsführer, Delta Gebäude Reinigung",
     photoAlt: "Porträt des Geschäftsführers von Delta Gebäude Reinigung",
     // Draft – please have the CEO confirm or rewrite this quote in his own words
-    quote: "Sauberkeit ist Vertrauenssache. Deshalb nehme ich mir Zeit, Ihre Wünsche genau zu verstehen – und wir halten, was wir vereinbaren.",
+    quote: "Sauberkeit ist Vertrauenssache. Deshalb nehmen wir uns Zeit, Ihre Wünsche genau zu verstehen – und wir halten, was wir vereinbaren.",
     text: "Bei Delta Gebäude Reinigung sprechen Sie direkt mit der Geschäftsführung. Ob Sie ein Angebot möchten, einen Termin abstimmen oder Feedback geben: Rufen Sie an oder schreiben Sie eine E-Mail.",
     call: "Anrufen",
     write: "E-Mail schreiben"
